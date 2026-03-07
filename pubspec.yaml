@@ -36,6 +36,9 @@ dependencies:
   cupertino_icons: ^1.0.8
   # State management
   flutter_bloc: ^9.1.1
+  # Code generator (mainly used with cubit & retrofit)
+  freezed: ^3.2.3
+  freezed_annotation: ^3.1.0
   # for dependency injection
   get_it: ^9.0.5
   # Automatically generate code for converting to and from JSON by annotating Dart classes
