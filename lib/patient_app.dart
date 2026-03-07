@@ -16,7 +16,7 @@ class PatientApp extends StatelessWidget {
         minTextAdapt: true,
         child: MaterialApp(
           theme: ThemeData(
-            primaryColor: AppColors.mainBlue,
+            primaryColor: AppColors.mainGreen,
             scaffoldBackgroundColor: Colors.white,
           ),
           debugShowCheckedModeBanner: false,
