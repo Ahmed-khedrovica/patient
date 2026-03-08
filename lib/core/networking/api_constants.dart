@@ -2,6 +2,7 @@ class ApiConstants {
   static const String apiBaseUrl = 'https://backend-production-ffbc8.up.railway.app/';
 
   static const String login = 'auth/login';
+  static const String signup = 'auth/signup';
 }
 
 class ApiErrors {

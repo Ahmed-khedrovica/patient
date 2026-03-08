@@ -5,13 +5,10 @@ import 'package:patient/patient_app.dart';
 
 import 'core/di/dependency_injection.dart';
 
-
-void main() async{
-
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupGetIt();
   // To fix texts being hidden bug in flutter_screenutil in release mode.
   await ScreenUtil.ensureScreenSize();
   runApp(PatientApp(appRouter: AppRouter()));
 }
-
