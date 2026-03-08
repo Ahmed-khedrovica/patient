@@ -5,6 +5,8 @@ import 'package:patient/core/routing/routes.dart';
 import '../../features/login/logic/login_cubit.dart';
 import '../../features/login/ui/login_screen.dart';
 import '../../features/navigation/ui/navigation_screen.dart';
+import '../../features/sign_up/logic/signup_cubit.dart';
+import '../../features/sign_up/ui/signup_screen.dart';
 import '../di/dependency_injection.dart';
 
 class AppRouter {
@@ -37,13 +39,13 @@ class AppRouter {
           ),
         );
 
-      // case Routes.signupScreen:
-      //   return MaterialPageRoute(
-      //     builder: (_) => BlocProvider(
-      //       create: (context) => getIt<SignupCubit>(),
-      //       child: const SignupScreen(),
-      //     ),
-      //   );
+      case Routes.signupScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<SignupCubit>(),
+            child: const SignupScreen(),
+          ),
+        );
       default:
         return null;
     }
