@@ -4,6 +4,7 @@ import 'package:retrofit/retrofit.dart';
 
 import '../../features/login/data/models/login_request.dart';
 import '../../features/login/data/models/login_response.dart';
+import '../../features/profile/data/models/profile_response.dart';
 import '../../features/sign_up/data/models/signup_response.dart';
 import 'api_constants.dart';
 
@@ -23,4 +24,7 @@ abstract class ApiService {
   Future<SignupResponse> signup(
       @Body() SignupRequest signupRequest
   );
+  // profile
+  @GET(ApiConstants.profile)
+  Future<ProfileResponse> getProfile();
 }

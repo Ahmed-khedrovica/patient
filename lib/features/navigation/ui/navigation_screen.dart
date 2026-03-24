@@ -35,7 +35,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      body: IndexedStack(index: _selectedTab, children: screens),
+      body: screens[_selectedTab],
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 26, left: 30, right: 30),
         child: ClipRRect(
@@ -45,10 +45,6 @@ class _NavigationScreenState extends State<NavigationScreen> {
             child: Container(
               decoration: BoxDecoration(
                 color: AppColors.grey.withAlpha(40),
-                border: Border.all(
-                  color: AppColors.grey.withAlpha(40),
-                  width: 1,
-                ),
               ),
               child: Theme(
                 data: Theme.of(context).copyWith(

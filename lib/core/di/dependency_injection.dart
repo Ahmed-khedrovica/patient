@@ -3,6 +3,8 @@ import 'package:get_it/get_it.dart';
 
 import '../../features/login/data/repos/login_repo.dart';
 import '../../features/login/logic/login_cubit.dart';
+import '../../features/profile/data/repos/profile_repo.dart';
+import '../../features/profile/logic/profile_cubit.dart';
 import '../../features/sign_up/data/repos/signup_repo.dart';
 import '../../features/sign_up/logic/signup_cubit.dart';
 import '../networking/api_service.dart';
@@ -22,4 +24,8 @@ Future<void> setupGetIt() async {
   //  signup
   getIt.registerLazySingleton<SignupRepo>(() => SignupRepo(getIt()));
   getIt.registerFactory<SignupCubit>(() => SignupCubit(getIt()));
+
+  // profile
+  getIt.registerLazySingleton<ProfileRepo>(() => ProfileRepo(getIt()));
+  getIt.registerFactory<ProfileCubit>(() => ProfileCubit(getIt()));
 }
