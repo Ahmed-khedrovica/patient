@@ -4,12 +4,10 @@ part 'profile_response.g.dart';
 
 @JsonSerializable()
 class ProfileResponse {
-  final bool success;
   final String message;
   final UserData data;
 
   ProfileResponse({
-    required this.success,
     required this.message,
     required this.data,
   });
@@ -29,13 +27,15 @@ class UserData {
   final String lastName;
   final String email;
   final String role;
+  @JsonKey(defaultValue: '')
   final String phone;
+  @JsonKey(defaultValue: false)
   final bool isDeleted;
 
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
 
-  @JsonKey(name: '__v')
+  @JsonKey(name: '__v', defaultValue: 0)
   final int version;
 
   final String? resetPasswordExpires;
@@ -48,11 +48,11 @@ class UserData {
     required this.lastName,
     required this.email,
     required this.role,
-    required this.phone,
-    required this.isDeleted,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.version,
+    this.phone = '',
+    this.isDeleted = false,
+    this.createdAt,
+    this.updatedAt,
+    this.version = 0,
     this.resetPasswordExpires,
     this.resetPasswordLastSent,
     this.resetPasswordToken,

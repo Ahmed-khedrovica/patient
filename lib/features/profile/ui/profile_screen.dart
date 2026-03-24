@@ -29,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
                   response: s.data,
                   onSignOut: () => _signOut(context),
                 ),
-                error: (e) => ProfileErrorView(message: e.errorMessage),
+                error: (e) => ProfileErrorScreen(message: e.errorMessage),
               );
             },
           ),

@@ -3,7 +3,6 @@ import 'package:patient/features/profile/data/models/profile_response.dart';
 /// Shapes used by [Skeletonizer]; values are arbitrary placeholders.
 ProfileResponse profilePlaceholderResponse() {
   return ProfileResponse(
-    success: true,
     message: 'Manage preferences, security, and how we reach you.',
     data: UserData(
       id: '000000000000000000000000',

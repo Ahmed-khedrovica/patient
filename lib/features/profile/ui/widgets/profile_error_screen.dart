@@ -9,8 +9,8 @@ import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_text_styles.dart';
 import '../../logic/profile_cubit.dart';
 
-class ProfileErrorView extends StatelessWidget {
-  const ProfileErrorView({super.key, required this.message});
+class ProfileErrorScreen extends StatelessWidget {
+  const ProfileErrorScreen({super.key, required this.message});
 
   final String message;
 
@@ -29,7 +29,7 @@ class ProfileErrorView extends StatelessWidget {
           ),
           verticalSpace(16),
           Text(
-             'Something went wrong' ,
+            message.isNotEmpty ? message : 'Something went wrong',
             textAlign: TextAlign.center,
             style: AppTextStyles.font14GreyRegular,
           ),

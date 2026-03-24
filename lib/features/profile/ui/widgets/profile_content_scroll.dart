@@ -33,20 +33,20 @@ class ProfileContentScroll extends StatelessWidget {
       Row(
         children: [
           ProfileStatBadge(
-            label: user.role,
-            value: profileDisplayRole('role'),
+            label: 'Role',
+            value: profileDisplayRole(user.role),
             icon: IconlyBold.profile,
           ),
           horizontalSpace(10),
           ProfileStatBadge(
-            label: user.phone.isEmpty ? '—' : user.phone,
-            value: 'Phone',
+            label: 'Phone',
+            value: user.phone.isEmpty ? '—' : user.phone,
             icon: IconlyBold.call,
           ),
           horizontalSpace(10),
           ProfileStatBadge(
-            label: '${user.createdAt.year}',
-            value: 'Since',
+            label: 'Since',
+            value: '${user.createdAt?.year ?? '—'}',
             icon: IconlyBold.calendar,
           ),
         ],
