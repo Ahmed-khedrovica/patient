@@ -34,15 +34,15 @@ class LoginScreen extends StatelessWidget {
                 Column(
                   children: [
                     const EmailAndPassword(),
-                    verticalSpace(24),
+                    verticalSpace(8),
                     Align(
                       alignment: AlignmentDirectional.centerEnd,
                       child: Text(
                         'Forgot Password?',
-                        style: AppTextStyles.font13BlueRegular,
+                        style: AppTextStyles.font13BlueSemiBold,
                       ),
                     ),
-                    verticalSpace(40),
+                    verticalSpace(22),
                     AppTextButton(
                       buttonText: 'Login',
                       textStyle: AppTextStyles.font16WhiteSemiBold,
@@ -52,7 +52,7 @@ class LoginScreen extends StatelessWidget {
                     ),
                     verticalSpace(16),
                     const TermesAndConditionsText(),
-                    verticalSpace(60),
+                    verticalSpace(30),
                     const DontHaveAnAccountText(),
                      const LoginBlocListener(),
                   ],
