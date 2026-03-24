@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:patient/core/helpers/constants.dart';
 
 import 'core/routing/app_router.dart';
 import 'core/routing/routes.dart';
@@ -20,7 +21,7 @@ class PatientApp extends StatelessWidget {
             scaffoldBackgroundColor: Colors.white,
           ),
           debugShowCheckedModeBanner: false,
-          initialRoute: Routes.loginScreen,
+          initialRoute: isLoggedInUser ? Routes.navigationScreen : Routes.loginScreen,
           onGenerateRoute: appRouter.generateRoute,
         )
     );
