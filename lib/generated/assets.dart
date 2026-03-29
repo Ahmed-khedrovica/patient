@@ -6,13 +6,36 @@ import 'package:flutter_svg/flutter_svg.dart';
 class Assets {
   Assets._();
 
+  static const $AssetsImagesGen images = $AssetsImagesGen();
+  static const $AssetsSvgsGen svgs = $AssetsSvgsGen();
+}
+
+class $AssetsImagesGen {
+  const $AssetsImagesGen();
+
+  final AssetGenImage codeGeneratedImage = const AssetGenImage(
+    'assets/images/Code_Generated_Image.png',
+  );
+  final AssetGenImage homeDoctor = const AssetGenImage(
+    'assets/images/home_doctor.png',
+  );
+}
+
+class $AssetsSvgsGen {
+  const $AssetsSvgsGen();
+
+  final SvgGenImage generalSpeciality = const SvgGenImage(
+    'assets/svgs/general_speciality.svg',
+  );
+  final SvgGenImage notifications = const SvgGenImage(
+    'assets/svgs/notifications.svg',
+  );
 }
 
 class AssetGenImage {
   const AssetGenImage(this._assetName, {this.size, this.flavors = const {}});
 
   final String _assetName;
-
 
   final Size? size;
   final Set<String> flavors;
@@ -70,15 +93,8 @@ class AssetGenImage {
     );
   }
 
-  ImageProvider provider({
-    AssetBundle? bundle,
-    String? package,
-  }) {
-    return AssetImage(
-      _assetName,
-      bundle: bundle,
-      package: package,
-    );
+  ImageProvider provider({AssetBundle? bundle, String? package}) {
+    return AssetImage(_assetName, bundle: bundle, package: package);
   }
 
   Widget custom({
@@ -96,3 +112,63 @@ class AssetGenImage {
   String get keyName => _assetName;
 }
 
+class SvgGenImage {
+  const SvgGenImage(this._assetName);
+
+  final String _assetName;
+
+  SvgPicture svg({
+    Key? key,
+    bool matchTextDirection = false,
+    AssetBundle? bundle,
+    String? package,
+    double? width,
+    double? height,
+    BoxFit fit = BoxFit.contain,
+    AlignmentGeometry alignment = Alignment.center,
+    bool allowDrawingOutsideViewBox = false,
+    WidgetBuilder? placeholderBuilder,
+    String? semanticsLabel,
+    bool excludeFromSemantics = false,
+    SvgTheme? theme,
+    Clip clipBehavior = Clip.hardEdge,
+    Color? color,
+    BlendMode colorBlendMode = BlendMode.srcIn,
+    bool cacheColorFilter = false,
+  }) {
+    return SvgPicture.asset(
+      _assetName,
+      key: key,
+      matchTextDirection: matchTextDirection,
+      bundle: bundle,
+      package: package,
+      width: width,
+      height: height,
+      fit: fit,
+      alignment: alignment,
+      allowDrawingOutsideViewBox: allowDrawingOutsideViewBox,
+      placeholderBuilder: placeholderBuilder,
+      semanticsLabel: semanticsLabel,
+      excludeFromSemantics: excludeFromSemantics,
+      theme: theme,
+      color: color,
+      colorBlendMode: colorBlendMode,
+      clipBehavior: clipBehavior,
+      cacheColorFilter: cacheColorFilter,
+    );
+  }
+
+  Widget custom({
+    Key? key,
+    required Widget Function(BuildContext context, String assetPath) builder,
+  }) {
+    return Builder(
+      key: key,
+      builder: (context) => builder(context, _assetName),
+    );
+  }
+
+  String get path => _assetName;
+
+  String get keyName => _assetName;
+}

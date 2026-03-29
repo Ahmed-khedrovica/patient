@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
 import 'package:patient/core/theming/app_colors.dart';
 import 'package:patient/features/home/ui/home_screen.dart';
@@ -17,9 +18,7 @@ class NavigationScreen extends StatefulWidget {
 class _NavigationScreenState extends State<NavigationScreen> {
   final List<Widget> screens = [
     HomeScreen(),
-    Container(color: Colors.blue),
     Container(color: Colors.white),
-    Container(color: Colors.blueGrey),
     ProfileScreen(),
   ];
 
@@ -37,15 +36,13 @@ class _NavigationScreenState extends State<NavigationScreen> {
       extendBody: true,
       body: screens[_selectedTab],
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.only(bottom: 26, left: 30, right: 30),
+        padding: EdgeInsets.only(bottom: 30.h, left: 50.w, right: 50.w),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(40),
           child: BackdropFilter(
             filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
             child: Container(
-              decoration: BoxDecoration(
-                color: AppColors.grey.withAlpha(40),
-              ),
+              decoration: BoxDecoration(color: AppColors.grey.withAlpha(40)),
               child: Theme(
                 data: Theme.of(context).copyWith(
                   splashColor: Colors.transparent,
@@ -67,21 +64,21 @@ class _NavigationScreenState extends State<NavigationScreen> {
                       activeIcon: Icon(IconlyBold.home),
                       label: '',
                     ),
+                    // BottomNavigationBarItem(
+                    //   icon: Icon(IconlyLight.heart),
+                    //   activeIcon: Icon(IconlyBold.heart),
+                    //   label: '',
+                    // ),
                     BottomNavigationBarItem(
-                      icon: Icon(IconlyLight.heart),
-                      activeIcon: Icon(IconlyBold.heart),
+                      icon: Icon(IconlyLight.paper),
+                      activeIcon: Icon(IconlyBold.paper),
                       label: '',
                     ),
-                    BottomNavigationBarItem(
-                      icon: Icon(IconlyLight.plus),
-                      activeIcon: Icon(IconlyBold.plus),
-                      label: '',
-                    ),
-                    BottomNavigationBarItem(
-                      icon: Icon(IconlyLight.search),
-                      activeIcon: Icon(IconlyBold.search),
-                      label: '',
-                    ),
+                    // BottomNavigationBarItem(
+                    //   icon: Icon(IconlyLight.search),
+                    //   activeIcon: Icon(IconlyBold.search),
+                    //   label: '',
+                    // ),
                     BottomNavigationBarItem(
                       icon: Icon(IconlyLight.user),
                       activeIcon: Icon(IconlyBold.user_2),

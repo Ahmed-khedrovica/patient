@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:patient/core/routing/routes.dart';
 
+import '../../features/home/logic/specialities_cubit.dart';
+import '../../features/home/ui/all_specialties_screen.dart';
 import '../../features/login/logic/login_cubit.dart';
 import '../../features/login/ui/login_screen.dart';
 import '../../features/navigation/ui/navigation_screen.dart';
@@ -26,10 +28,8 @@ class AppRouter {
       //     ),
       //   );
 
-    case Routes.navigationScreen:
-      return MaterialPageRoute(
-        builder: (_) => const NavigationScreen(),
-      );
+      case Routes.navigationScreen:
+        return MaterialPageRoute(builder: (_) => const NavigationScreen());
 
       case Routes.loginScreen:
         return MaterialPageRoute(
@@ -44,6 +44,14 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => getIt<SignupCubit>(),
             child: const SignupScreen(),
+          ),
+        );
+
+      case Routes.allSpecialtiesScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<SpecialitiesCubit>()..getSpecialties(),
+            child: const AllSpecialtiesScreen(),
           ),
         );
       default:
