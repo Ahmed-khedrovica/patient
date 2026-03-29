@@ -1,16 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:patient/core/helpers/shared_pref_helper.dart';
-import '../../../core/helpers/constants.dart';
+
+import '../../../core/helpers/token_manger.dart';
 import '../../../core/networking/api_result.dart';
 import '../data/models/login_request.dart';
 import '../data/repos/login_repo.dart';
 import 'login_state.dart';
 
+/// Manages the login flow and persists both tokens on success.
 class LoginCubit extends Cubit<LoginState> {
   final LoginRepo _loginRepo;
+  final TokenManager _tokenManager;
 
-  LoginCubit(this._loginRepo) : super(const LoginState.initial());
+  LoginCubit(this._loginRepo, this._tokenManager)
+    : super(const LoginState.initial());
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -27,16 +30,15 @@ class LoginCubit extends Cubit<LoginState> {
     );
     response.when(
       success: (loginResponse) async {
-        await saveUserToken(loginResponse.accessToken);
+        await _tokenManager.saveTokens(
+          accessToken: loginResponse.accessToken,
+          refreshToken: loginResponse.refreshToken,
+        );
         emit(LoginState.success(loginResponse));
       },
       failure: (error) {
         emit(LoginState.error(errorMessage: error.apiErrorModel.message ?? ''));
       },
     );
-  }
-
-  Future<void> saveUserToken(String token) async {
-    await SharedPrefHelper.setSecuredString(PrefKeys.userToken, token);
   }
 }

@@ -5,7 +5,6 @@ import 'package:patient/patient_app.dart';
 
 import 'core/di/dependency_injection.dart';
 import 'core/helpers/constants.dart';
-import 'core/helpers/shared_pref_helper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

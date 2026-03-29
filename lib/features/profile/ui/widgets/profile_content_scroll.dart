@@ -68,12 +68,6 @@ class ProfileContentScroll extends StatelessWidget {
       ),
       verticalSpace(10),
       ProfileMenuTile(
-        title: 'Notifications',
-        leadingIcon: IconlyLight.notification,
-        onTap: () {},
-      ),
-      verticalSpace(10),
-      ProfileMenuTile(
         title: 'Privacy & security',
         subtitle: 'User ID · ${profileShortId(user.id)}',
         leadingIcon: IconlyLight.shield_done,

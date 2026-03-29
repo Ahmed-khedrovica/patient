@@ -21,7 +21,7 @@ class ProfileRepo {
   }
 
   Future<void> logout() async {
-    await SharedPrefHelper.clearAllData();
+    await SharedPrefHelper.clearAllSecuredData();
     isLoggedInUser = false;
   }
 }

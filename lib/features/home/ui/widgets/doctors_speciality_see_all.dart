@@ -1,4 +1,5 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:patient/core/routing/routes.dart';
 
 import '../../../../core/theming/app_text_styles.dart';
 
@@ -9,14 +10,13 @@ class DoctorsSpecialitySeeAll extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text(
-            'Doctor Speciality',
-            style: AppTextStyles.font18DarkBlueSemiBold
-        ),
+        Text('Doctor Speciality', style: AppTextStyles.font18DarkBlueSemiBold),
         const Spacer(),
-        Text(
-            'See All',
-            style: AppTextStyles.font12BlueRegular
+        InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, Routes.allSpecialtiesScreen);
+          },
+          child: Text('See All', style: AppTextStyles.font12BlueRegular),
         ),
       ],
     );

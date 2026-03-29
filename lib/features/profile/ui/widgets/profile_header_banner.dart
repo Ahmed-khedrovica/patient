@@ -57,13 +57,11 @@ class ProfileHeaderBanner extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(displayName, style: AppTextStyles.font18WhiteMedium),
+                    Text('Welcome back!', style: AppTextStyles.font16WhiteSemiBold),
                     SizedBox(height: 4.h),
                     Text(
-                      subtitle,
-                      style: AppTextStyles.font13GreyRegular.copyWith(
-                        color: Colors.white.withValues(alpha: 0.9),
-                      ),
+                      displayName,
+                        style: AppTextStyles.font16WhiteSemiBold,
                     ),
                   ],
                 ),
