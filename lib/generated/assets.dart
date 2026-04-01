@@ -27,9 +27,6 @@ class $AssetsSvgsGen {
   final SvgGenImage generalSpeciality = const SvgGenImage(
     'assets/svgs/general_speciality.svg',
   );
-  final SvgGenImage notifications = const SvgGenImage(
-    'assets/svgs/notifications.svg',
-  );
 }
 
 class AssetGenImage {
