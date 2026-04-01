@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
+import '../../../../../core/theming/app_colors.dart';
 import '../home_state_widgets.dart';
 
 class SpecialitiesLoadingSkeleton extends StatelessWidget {
@@ -21,13 +22,15 @@ class SpecialitiesLoadingSkeleton extends StatelessWidget {
               padding: EdgeInsetsDirectional.only(start: index == 0 ? 0 : 24.w),
               child: Column(
                 children: [
-                  const CircleAvatar(radius: 28, child: Icon(Icons.medical_services)),
+                  const CircleAvatar(
+                      backgroundColor: AppColors.lighterGrey,
+                      radius: 28, child: Icon(Icons.medical_services)),
                   SizedBox(height: 4.h),
                   Container(
                     width: 70.w,
                     height: 12.h,
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: AppColors.lighterGrey,
                       borderRadius: BorderRadius.circular(6.r),
                     ),
                   ),

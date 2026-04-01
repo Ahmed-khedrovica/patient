@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:patient/core/theming/app_colors.dart';
 import 'package:patient/features/appointments/logic/appointments_cubit.dart';
 import 'package:patient/features/appointments/logic/appointments_state.dart';
 import 'package:patient/features/appointments/ui/widgets/appointment_card.dart';
 import 'package:patient/features/appointments/ui/widgets/appointments_empty_view.dart';
 import 'package:patient/features/appointments/ui/widgets/appointments_error_view.dart';
 import 'package:patient/features/appointments/ui/widgets/appointments_header.dart';
+import 'package:patient/features/appointments/ui/widgets/appointments_loading_skeleton.dart';
 
 /// Screen that lists all appointments for the currently logged-in patient.
 ///
@@ -39,21 +39,14 @@ class _AppointmentsBody extends StatelessWidget {
       builder: (context, state) {
         return state.when(
           initial: () => const SizedBox.shrink(),
-          loading: () => const Center(
-            child: CircularProgressIndicator(
-              valueColor: AlwaysStoppedAnimation<Color>(
-                AppColors.mainGreen,
-              ),
-            ),
-          ),
+          loading: () => const AppointmentsLoadingSkeleton(),
           success: (data) {
             final list = data as List;
             if (list.isEmpty) return const AppointmentsEmptyView();
             return _AppointmentsList(appointments: list);
           },
           error: (msg) => AppointmentsErrorView(
-            onRetry: () =>
-                context.read<AppointmentsCubit>().getAppointments(),
+            onRetry: () => context.read<AppointmentsCubit>().getAppointments(),
           ),
         );
       },
