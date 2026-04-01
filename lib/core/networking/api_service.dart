@@ -2,6 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:patient/features/sign_up/data/models/signup_request.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../features/appointments/data/models/appointments_response.dart';
+import '../../features/book_doctor/data/models/book_doctor_request.dart';
+import '../../features/book_doctor/data/models/book_doctor_response.dart';
 import '../../features/home/data/models/specialties_response.dart';
 import '../../features/login/data/models/login_request.dart';
 import '../../features/login/data/models/login_response.dart';
@@ -31,4 +34,12 @@ abstract class ApiService {
   // specialties
   @GET(ApiConstants.specialties)
   Future<SpecialtiesResponse> getSpecialties();
+  // book doctor
+  @POST(ApiConstants.bookDoctor)
+  Future<BookDoctorResponse> bookDoctor(
+      @Body() BookDoctorRequest bookDoctorRequest
+  );
+  // appointments
+  @GET(ApiConstants.appointments)
+  Future<AppointmentsResponse> getAppointments();
 }

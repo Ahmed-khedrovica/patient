@@ -7,10 +7,7 @@ class SpecialtiesResponse {
   final String message;
   final Data data;
 
-  SpecialtiesResponse({
-    required this.message,
-    required this.data,
-  });
+  SpecialtiesResponse({required this.message, required this.data});
 
   factory SpecialtiesResponse.fromJson(Map<String, dynamic> json) =>
       _$SpecialtiesResponseFromJson(json);
@@ -21,15 +18,16 @@ class SpecialtiesResponse {
 @JsonSerializable()
 class Data {
   final List<Specialty> specialties;
+  final List<Doctor> doctors;
   final Pagination pagination;
 
   Data({
     required this.specialties,
+    required this.doctors,
     required this.pagination,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) =>
-      _$DataFromJson(json);
+  factory Data.fromJson(Map<String, dynamic> json) => _$DataFromJson(json);
 
   Map<String, dynamic> toJson() => _$DataToJson(this);
 }
@@ -44,19 +42,19 @@ class Specialty {
   final int maxAppointmentsPerDay;
 
   @JsonKey(name: '__v')
-  final int v;
+  final int? v;
 
-  final DateTime createdAt;
-  final DateTime updatedAt;
+  final DateTime? createdAt;
+  final DateTime? updatedAt;
 
   Specialty({
     required this.id,
     required this.name,
     required this.schedule,
     required this.maxAppointmentsPerDay,
-    required this.v,
-    required this.createdAt,
-    required this.updatedAt,
+    this.v,
+    this.createdAt,
+    this.updatedAt,
   });
 
   factory Specialty.fromJson(Map<String, dynamic> json) =>
@@ -66,16 +64,64 @@ class Specialty {
 }
 
 @JsonSerializable()
+class Doctor {
+  @JsonKey(name: '_id')
+  final String id;
+
+  final User userId;
+
+  final Specialty specialtyId;
+
+  final DateTime createdAt;
+  final DateTime updatedAt;
+
+  @JsonKey(name: '__v')
+  final int v;
+
+  Doctor({
+    required this.id,
+    required this.userId,
+    required this.specialtyId,
+    required this.createdAt,
+    required this.updatedAt,
+    required this.v,
+  });
+
+  factory Doctor.fromJson(Map<String, dynamic> json) => _$DoctorFromJson(json);
+
+  Map<String, dynamic> toJson() => _$DoctorToJson(this);
+}
+
+@JsonSerializable()
+class User {
+  @JsonKey(name: '_id')
+  final String id;
+
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String phone;
+
+  User({
+    required this.id,
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.phone,
+  });
+
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+
+  Map<String, dynamic> toJson() => _$UserToJson(this);
+}
+
+@JsonSerializable()
 class Schedule {
   final String day;
   final String startTime;
   final String endTime;
 
-  Schedule({
-    required this.day,
-    required this.startTime,
-    required this.endTime,
-  });
+  Schedule({required this.day, required this.startTime, required this.endTime});
 
   factory Schedule.fromJson(Map<String, dynamic> json) =>
       _$ScheduleFromJson(json);
@@ -85,11 +131,10 @@ class Schedule {
 
 @JsonSerializable()
 class Pagination {
-  final SpecialtiesPagination specialties;
+  final PageInfo specialties;
+  final PageInfo doctors;
 
-  Pagination({
-    required this.specialties,
-  });
+  Pagination({required this.specialties, required this.doctors});
 
   factory Pagination.fromJson(Map<String, dynamic> json) =>
       _$PaginationFromJson(json);
@@ -98,7 +143,7 @@ class Pagination {
 }
 
 @JsonSerializable()
-class SpecialtiesPagination {
+class PageInfo {
   final int total;
   final int page;
   final int limit;
@@ -106,7 +151,7 @@ class SpecialtiesPagination {
   final bool hasNext;
   final bool hasPrev;
 
-  SpecialtiesPagination({
+  PageInfo({
     required this.total,
     required this.page,
     required this.limit,
@@ -115,9 +160,8 @@ class SpecialtiesPagination {
     required this.hasPrev,
   });
 
-  factory SpecialtiesPagination.fromJson(Map<String, dynamic> json) =>
-      _$SpecialtiesPaginationFromJson(json);
+  factory PageInfo.fromJson(Map<String, dynamic> json) =>
+      _$PageInfoFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$SpecialtiesPaginationToJson(this);
+  Map<String, dynamic> toJson() => _$PageInfoToJson(this);
 }

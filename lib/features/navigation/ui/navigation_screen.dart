@@ -1,11 +1,15 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
+import 'package:patient/core/di/dependency_injection.dart';
 import 'package:patient/core/theming/app_colors.dart';
+import 'package:patient/features/appointments/logic/appointments_cubit.dart';
 import 'package:patient/features/home/ui/home_screen.dart';
 
+import '../../appointments/ui/appointments_screen.dart';
 import '../../profile/ui/profile_screen.dart';
 
 class NavigationScreen extends StatefulWidget {
@@ -16,11 +20,20 @@ class NavigationScreen extends StatefulWidget {
 }
 
 class _NavigationScreenState extends State<NavigationScreen> {
-  final List<Widget> screens = [
-    HomeScreen(),
-    Container(color: Colors.white),
-    ProfileScreen(),
-  ];
+  late final List<Widget> screens;
+
+  @override
+  void initState() {
+    super.initState();
+    screens = [
+      HomeScreen(),
+      BlocProvider(
+        create: (_) => getIt<AppointmentsCubit>()..getAppointments(),
+        child: const AppointmentsScreen(),
+      ),
+      ProfileScreen(),
+    ];
+  }
 
   int _selectedTab = 0;
 

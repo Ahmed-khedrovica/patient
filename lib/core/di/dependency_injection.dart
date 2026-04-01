@@ -1,6 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../features/appointments/data/repos/appointments_repo.dart';
+import '../../features/appointments/logic/appointments_cubit.dart';
+import '../../features/book_doctor/data/repos/book_doctor_repo.dart';
+import '../../features/book_doctor/logic/book_doctor_cubit.dart';
 import '../../features/home/data/repos/specialties_repo.dart';
 import '../../features/home/logic/specialities_cubit.dart';
 import '../../features/login/data/repos/login_repo.dart';
@@ -38,4 +42,16 @@ Future<void> setupGetIt() async {
   // specialties
   getIt.registerLazySingleton<SpecialtiesRepo>(() => SpecialtiesRepo(getIt()));
   getIt.registerFactory<SpecialitiesCubit>(() => SpecialitiesCubit(getIt()));
+
+  // book doctor
+  getIt.registerLazySingleton<BookDoctorRepo>(() => BookDoctorRepo(getIt()));
+  getIt.registerFactory<BookDoctorCubit>(() => BookDoctorCubit(getIt()));
+
+  // appointments
+  getIt.registerLazySingleton<AppointmentsRepo>(
+    () => AppointmentsRepo(getIt()),
+  );
+  getIt.registerFactory<AppointmentsCubit>(
+    () => AppointmentsCubit(getIt()),
+  );
 }

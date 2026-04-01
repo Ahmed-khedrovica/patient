@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:patient/features/home/logic/specialities_cubit.dart';
-import 'package:patient/features/home/ui/widgets/doctors_blue_container.dart';
+import 'package:patient/features/home/ui/widgets/doctors_green_container.dart';
 import 'package:patient/features/home/ui/widgets/doctors_list/doctors_list_view.dart';
 import 'package:patient/features/home/ui/widgets/doctors_speciality_see_all.dart';
 import 'package:patient/features/home/ui/widgets/home_top_bar.dart';
@@ -27,14 +27,14 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const HomeTopBar(userName: 'User'),
-                DoctorsBlueContainer(),
+                const HomeTopBar(),
+                const DoctorsGreenContainer(),
                 verticalSpace(24.h),
                 const DoctorsSpecialitySeeAll(),
                 verticalSpace(24.h),
-                SpecialityListView(),
+                const SpecialityListView(),
                 verticalSpace(24.h),
-                Expanded(child: DoctorsListView()),
+                const Expanded(child: DoctorsListView()),
               ],
             ),
           ),

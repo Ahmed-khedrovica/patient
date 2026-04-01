@@ -20,7 +20,7 @@ class AlreadyHaveAccountText extends StatelessWidget {
           ),
           TextSpan(
             text: ' Login',
-            style: AppTextStyles.font13BlueSemiBold,
+            style: AppTextStyles.font13GreenSemiBold,
             recognizer: TapGestureRecognizer()
               ..onTap = () {
                 context.pushReplacementNamed(Routes.loginScreen);

@@ -2,8 +2,7 @@ import 'package:patient/features/profile/data/models/profile_response.dart';
 
 String profileMemberSubtitle(UserData user) {
   final createdAt = user.createdAt;
-  final role = profileDisplayRole(user.role);
-  if (createdAt == null) return role;
+  if (createdAt == null) return '—';
   const months = [
     'Jan',
     'Feb',
@@ -19,7 +18,7 @@ String profileMemberSubtitle(UserData user) {
     'Dec',
   ];
   final joined = '${months[createdAt.month - 1]} ${createdAt.year}';
-  return '$joined · $role';
+  return joined;
 }
 
 String profileDisplayRole(String role) {

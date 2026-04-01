@@ -6,6 +6,8 @@ class ApiConstants {
   static const String signup = 'auth/signup';
   static const String profile = 'user/profile';
   static const String specialties = 'patient/specialties';
+  static const String bookDoctor = 'patient/book';
+  static const String appointments = 'patient/appointments';
 }
 
 class ApiErrors {

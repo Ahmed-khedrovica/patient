@@ -4,6 +4,7 @@ import 'package:patient/core/theming/app_colors.dart';
 import 'package:patient/features/home/data/models/specialties_response.dart';
 import 'package:patient/features/home/logic/specialities_cubit.dart';
 import 'package:patient/features/home/logic/specialities_state.dart';
+import 'package:patient/features/home/ui/widgets/all_specialties/all_speciality_bloc_builder.dart';
 
 import 'widgets/all_specialties/all_specialties_app_bar.dart';
 import 'widgets/all_specialties/specialties_error_view.dart';
@@ -23,29 +24,10 @@ class AllSpecialtiesScreen extends StatelessWidget {
         child: Column(
           children: [
             const AllSpecialtiesAppBar(),
-            Expanded(child: _buildBody()),
+            Expanded(child: AllSpecialityBlocBuilder()),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildBody() {
-    return BlocBuilder<
-      SpecialitiesCubit,
-      SpecialitiesState<SpecialtiesResponse>
-    >(
-      builder: (context, state) {
-        return state.when(
-          initial: () => const SizedBox.shrink(),
-          loading: () => const Center(
-            child: CircularProgressIndicator(color: AppColors.mainGreen),
-          ),
-          success: (response) =>
-              SpecialtiesGrid(specialties: response.data.specialties),
-          error: (message) => SpecialtiesErrorView(message: message),
-        );
-      },
     );
   }
 }

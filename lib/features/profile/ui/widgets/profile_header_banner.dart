@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:iconly/iconly.dart';
+import 'package:patient/features/profile/ui/widgets/profile_avatar_ring.dart';
 
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_text_styles.dart';
@@ -21,7 +22,7 @@ class ProfileHeaderBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: EdgeInsets.fromLTRB(24.w, 28.h, 24.w, 32.h),
+      padding: EdgeInsets.fromLTRB(16.w, 16.h, 16.w, 16.h),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -45,20 +46,20 @@ class ProfileHeaderBanner extends StatelessWidget {
         children: [
           Row(
             children: [
-              _AvatarRing(
+              AvatarRing(
                 child: Icon(
                   IconlyBold.user_2,
                   size: 36.sp,
                   color: AppColors.mainGreen,
                 ),
               ),
-              SizedBox(width: 16.w),
+              SizedBox(width: 20.w),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Welcome back!', style: AppTextStyles.font16WhiteSemiBold),
-                    SizedBox(height: 4.h),
+                    SizedBox(height: 2.h),
                     Text(
                       displayName,
                         style: AppTextStyles.font16WhiteSemiBold,
@@ -66,23 +67,6 @@ class ProfileHeaderBanner extends StatelessWidget {
                   ],
                 ),
               ),
-              if (onEditTap != null)
-                Material(
-                  color: Colors.white.withValues(alpha: 0.2),
-                  shape: const CircleBorder(),
-                  child: InkWell(
-                    customBorder: const CircleBorder(),
-                    onTap: onEditTap,
-                    child: Padding(
-                      padding: EdgeInsets.all(10.w),
-                      child: Icon(
-                        IconlyLight.edit,
-                        color: Colors.white,
-                        size: 20.sp,
-                      ),
-                    ),
-                  ),
-                ),
             ],
           ),
         ],
@@ -91,31 +75,3 @@ class ProfileHeaderBanner extends StatelessWidget {
   }
 }
 
-class _AvatarRing extends StatelessWidget {
-  const _AvatarRing({required this.child});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(3.w),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(color: Colors.white, width: 2.5),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.12),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
-          ),
-        ],
-      ),
-      child: CircleAvatar(
-        radius: 40.r,
-        backgroundColor: AppColors.moreLightGrey,
-        child: child,
-      ),
-    );
-  }
-}

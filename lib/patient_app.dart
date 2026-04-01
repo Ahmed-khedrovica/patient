@@ -9,6 +9,7 @@ import 'core/theming/app_colors.dart';
 
 class PatientApp extends StatelessWidget {
   final AppRouter appRouter;
+
   const PatientApp({super.key, required this.appRouter});
 
   @override

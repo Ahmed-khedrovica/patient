@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:patient/core/theming/app_text_styles.dart';
 import 'package:patient/features/sign_up/ui/widgets/already_have_an_account_text.dart';
+import 'package:patient/features/sign_up/ui/widgets/auth_header_text.dart';
 import 'package:patient/features/sign_up/ui/widgets/sign_up_bloc_listener.dart';
 import 'package:patient/features/sign_up/ui/widgets/sign_up_form.dart';
 
@@ -24,11 +25,10 @@ class SignupScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Create Account', style: AppTextStyles.font24BlueBold),
-                verticalSpace(4),
-                Text(
-                  'Sign up now and start exploring all that our app has to offer. We\'re excited to welcome you to our community!',
-                  style: AppTextStyles.font14GreyRegular,
+                AuthTextHeader(
+                  text1: 'Create Account',
+                  text2:
+                      'Sign up now and start exploring all that our app has to offer. We\'re excited to welcome you to our community!',
                 ),
                 verticalSpace(16),
                 Column(

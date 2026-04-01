@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:patient/core/routing/routes.dart';
+import 'package:patient/features/book_doctor/logic/book_doctor_cubit.dart';
+import 'package:patient/features/book_doctor/ui/book_doctor_screen.dart';
+import 'package:patient/features/home/data/models/specialties_response.dart';
 
 import '../../features/home/logic/specialities_cubit.dart';
 import '../../features/home/ui/all_specialties_screen.dart';
@@ -52,6 +55,14 @@ class AppRouter {
           builder: (_) => BlocProvider(
             create: (context) => getIt<SpecialitiesCubit>()..getSpecialties(),
             child: const AllSpecialtiesScreen(),
+          ),
+        );
+      case Routes.bookDoctorScreen:
+        final doctor = arguments as Doctor;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<BookDoctorCubit>(),
+            child: BookDoctorScreen(doctor: doctor),
           ),
         );
       default:

@@ -9,6 +9,7 @@ import 'package:patient/features/login/ui/widgets/termes_and_conditions_text.dar
 import '../../../core/helpers/spacing.dart';
 import '../../../core/theming/app_text_styles.dart';
 import '../../../core/widgets/app_text_button.dart';
+import '../../sign_up/ui/widgets/auth_header_text.dart';
 import '../logic/login_cubit.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -24,11 +25,10 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Welcome Back', style: AppTextStyles.font24BlueBold),
-                verticalSpace(8),
-                Text(
-                  "We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
-                  style: AppTextStyles.font14GreyRegular,
+                AuthTextHeader(
+                  text1: 'Welcome Back',
+                  text2:
+                      "We're excited to have you back, can't wait to see what you've been up to since you last logged in.",
                 ),
                 verticalSpace(36),
                 Column(
@@ -39,7 +39,7 @@ class LoginScreen extends StatelessWidget {
                       alignment: AlignmentDirectional.centerEnd,
                       child: Text(
                         'Forgot Password?',
-                        style: AppTextStyles.font13BlueSemiBold,
+                        style: AppTextStyles.font13GreenSemiBold,
                       ),
                     ),
                     verticalSpace(22),
@@ -54,7 +54,7 @@ class LoginScreen extends StatelessWidget {
                     const TermesAndConditionsText(),
                     verticalSpace(30),
                     const DontHaveAnAccountText(),
-                     const LoginBlocListener(),
+                    const LoginBlocListener(),
                   ],
                 ),
               ],
@@ -66,7 +66,7 @@ class LoginScreen extends StatelessWidget {
   }
 
   void validateThenDoLogin(BuildContext context) {
-    if(context.read<LoginCubit>().formKey.currentState!.validate()){
+    if (context.read<LoginCubit>().formKey.currentState!.validate()) {
       context.read<LoginCubit>().emitLoginStates();
     }
   }

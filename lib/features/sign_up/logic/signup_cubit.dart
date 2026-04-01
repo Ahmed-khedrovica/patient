@@ -22,7 +22,6 @@ class SignupCubit extends Cubit<SignupState> {
 
   void emitSignupStates() async {
     emit(const SignupState.loading());
-    // await Future.delayed(Duration(seconds: 2));
     final response = await _signupRepo.signup(
       SignupRequest(
         firstName: firstNameController.text,

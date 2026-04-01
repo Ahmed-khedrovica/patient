@@ -16,7 +16,7 @@ class SpecialtyScheduleSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(8.r),
+      padding: EdgeInsets.all(10.r),
       decoration: BoxDecoration(
         color: AppColors.mainGreen.withAlpha(10),
         borderRadius: BorderRadius.circular(10.r),
@@ -25,7 +25,7 @@ class SpecialtyScheduleSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _buildHeader(),
-          verticalSpace(6),
+          verticalSpace(4),
           ...schedule.map(_buildRow),
         ],
       ),
@@ -36,11 +36,11 @@ class SpecialtyScheduleSection extends StatelessWidget {
     return Row(
       children: [
         Icon(IconlyBold.calendar, size: 12.sp, color: AppColors.mainGreen),
-        horizontalSpace(4),
+        horizontalSpace(6),
         Text(
           'Schedule',
           style: TextStyle(
-            fontSize: 11.sp,
+            fontSize: 12.sp,
             fontWeight: FontWeight.w600,
             color: AppColors.mainGreen,
           ),

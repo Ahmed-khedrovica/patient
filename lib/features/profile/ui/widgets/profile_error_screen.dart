@@ -37,7 +37,8 @@ class ProfileErrorScreen extends StatelessWidget {
           AppTextButton(
             backgroundColor: AppColors.lighterGrey,
             onPressed: () => context.read<ProfileCubit>().getProfile(),
-             buttonText: 'Try again', textStyle: AppTextStyles.font15DarkBlueMedium,
+            buttonText: 'Try again',
+            textStyle: AppTextStyles.font15DarkBlueMedium,
           ),
         ],
       ),

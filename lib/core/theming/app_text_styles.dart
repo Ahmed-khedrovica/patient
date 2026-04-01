@@ -41,7 +41,7 @@ class AppTextStyles {
     color: AppColors.darkBlue,
   );
 
-  static TextStyle font13BlueSemiBold = TextStyle(
+  static TextStyle font13GreenSemiBold = TextStyle(
     fontSize: 13.sp,
     fontWeight: FontWeightHelper.semiBold,
     color: AppColors.mainGreen,
@@ -95,7 +95,7 @@ class AppTextStyles {
     color: Colors.white,
   );
 
-  static TextStyle font24BlueBold = TextStyle(
+  static TextStyle font24GreenBold = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontWeightHelper.bold,
     color: AppColors.mainGreen,
@@ -119,7 +119,7 @@ class AppTextStyles {
     color: AppColors.grey,
   );
 
-  static TextStyle font12BlueRegular = TextStyle(
+  static TextStyle font12GreenRegular = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeightHelper.regular,
     color: AppColors.mainGreen,

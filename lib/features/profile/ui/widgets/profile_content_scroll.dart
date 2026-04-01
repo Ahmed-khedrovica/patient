@@ -6,7 +6,6 @@ import 'package:patient/features/profile/data/models/profile_response.dart';
 import '../../../../core/animations/staggered_entrance_animation.dart';
 import '../../../../core/helpers/profile_display_helpers.dart';
 import '../../../../core/helpers/spacing.dart';
-import '../../../../core/theming/app_text_styles.dart';
 import 'profile_header_banner.dart';
 import 'profile_menu_tile.dart';
 import 'profile_section_label.dart';
@@ -45,18 +44,11 @@ class ProfileContentScroll extends StatelessWidget {
           ),
           horizontalSpace(10),
           ProfileStatBadge(
-            label: '${user.createdAt?.year ?? '—'}',
+            label: profileMemberSubtitle(user),
             value: 'Since',
             icon: IconlyBold.calendar,
           ),
         ],
-      ),
-      verticalSpace(26),
-      Text('Your account', style: AppTextStyles.font24BlueBold),
-      verticalSpace(6),
-      Text(
-        'Manage preferences, security, and how we reach you.',
-        style: AppTextStyles.font14GreyRegular,
       ),
       verticalSpace(20),
       const ProfileSectionLabel(title: 'Settings'),
@@ -64,6 +56,7 @@ class ProfileContentScroll extends StatelessWidget {
         title: 'Email',
         subtitle: user.email,
         leadingIcon: IconlyLight.profile,
+        trailing: const SizedBox.shrink(),
         onTap: () {},
       ),
       verticalSpace(10),
@@ -71,6 +64,7 @@ class ProfileContentScroll extends StatelessWidget {
         title: 'Privacy & security',
         subtitle: 'User ID · ${profileShortId(user.id)}',
         leadingIcon: IconlyLight.shield_done,
+        trailing: const SizedBox.shrink(),
         onTap: () {},
       ),
       verticalSpace(22),

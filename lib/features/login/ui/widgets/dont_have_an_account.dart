@@ -20,7 +20,7 @@ class DontHaveAnAccountText extends StatelessWidget {
             ),
             TextSpan(
                 text: 'Sign Up',
-                style: AppTextStyles.font13BlueSemiBold,
+                style: AppTextStyles.font13GreenSemiBold,
                 recognizer: TapGestureRecognizer()
                   ..onTap = (){
                     context.pushReplacementNamed(Routes.signupScreen);
